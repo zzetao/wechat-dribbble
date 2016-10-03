@@ -1,0 +1,63 @@
+<view class="shot-container">
+    <view class="author-wrap">
+        <view class="author-avatar">
+            <image src="{{ shot.user_avatar }}"></image>
+        </view>
+        <view class="author-info">
+            <text class="author-name">{{ shot.user_name }}</text>
+            <text class="author-by">
+                {{ shot.created_at }}
+            </text>
+        </view>
+    </view>
+    <view class="shot-img-wrap">
+        <image class="shot-img" src="{{ shot.image }}"></image>
+    </view>
+    <view class="shot-meta">
+        <view class="shot-like">
+            <image class="shot-meta-icon shot-like-img" src="../../images/icon-hearts.png"></image>
+            <text class="shot-meta-text">{{ shot.likes_count }}</text>
+        </view>
+        <view class="shot-views">
+            <image class="shot-meta-icon shot-views-img" src="../../images/icon-views.png"></image>
+            <text class="shot-meta-text">{{ shot.views_count }}</text>
+        </view>
+        <view class="shot-bucket">
+            <image class="shot-meta-icon shot-bucket-img" src="../../images/icon-bucket.png"></image>
+            <text class="shot-meta-text">{{ shot.buckets_count }}</text>
+        </view>
+    </view>
+    <view class="shot-description">
+        <text>{{ shot.description || 'none' }}</text>
+    </view>
+    <view class="shot-comments">
+        <view class="comments-count">
+            <text>{{shot.comments_count}} Responses</text>
+        </view>
+        <view class="comments-wrapper">
+
+            <view class="comment-item">
+                <view class="comment-user">
+                    <image class="comment-user-avatar" src="https://d13yacurqjgara.cloudfront.net/users/395439/avatars/small/b938430f1aac77f85052f9e755683b82.jpeg?1471309374"></image>
+                    <text class="comment-user-name">Luke Holloway</text>
+                </view>
+                <view class="comment-content">the Pen tool since, it everyone favorite tool in illustrator</view>
+                <view class="comment-info">
+                    <view class="comment-left">
+                        <text class="comment-date">about 17 hours ago</text>
+                        <text class="comment-like-btn">Like?</text>
+                    </view>
+                    <view class="comment-right">
+                        <image class="comment-hearts" src="../../images/icon-hearts.png"></image>
+                        <text class="comment-like">3</text>
+                    </view>
+                </view>
+            </view>
+
+        <block wx:if="isShowLoading">
+            <include src="../../components/loading.wxml" />
+        </block>
+
+        </view>
+    </view>
+</view>

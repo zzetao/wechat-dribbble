@@ -1,0 +1,129 @@
+page {
+    background: #f4f4f4;
+    color: #444;
+}
+
+.shot-img{
+    width: 100%;
+}
+
+/* author */
+.author-wrap {
+    padding: 20px 15px;
+}
+.author-avatar image {
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+    border-radius: 40px;
+    margin-top: 3px;
+}
+.author-info {
+    padding-left: 60px;
+}
+
+.author-info .author-name {
+    color: #444;
+    font-size: 16px;
+}
+.author-info .author-by {
+    color: #bbb;
+    font-size: 14px;
+}
+
+
+
+.shot-meta {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 2px;
+}
+.shot-meta view{
+    display: inline-block;
+    text-align: center;
+    width: 33.33%;
+    padding: 10px 0;
+    font-size: 14px;
+}
+.shot-meta .shot-meta-icon {
+    width: 20px;
+    height: 20px;
+    padding-right: 5px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+}
+.shot-meta .shot-meta-text {
+    color: #999;
+}
+
+
+.shot-description {
+    color: #444;
+    margin: 0 15px;
+    padding: 15px 0;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+    line-height: 1.5;
+}
+
+
+
+/* comments */
+.shot-comments {
+    padding: 15px;
+}
+.shot-comments .comments-count {
+    padding-bottom: 15px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+.comment-item {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+.comment-item .comment-user-avatar {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    border-radius: 16px;
+    vertical-align: middle;
+}
+.comment-item .comment-user-name {
+    font-size: 15px;
+    font-weight: 500;
+}
+.comment-item .comment-content {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px; 
+    margin-top: 2px;
+}
+.comment-item .comment-info {
+    overflow: hidden;
+}
+.comment-item .comment-info .comment-left {
+    float: left;
+    color: #ccc;
+    font-size: 12px;
+}
+.comment-left .comment-date {
+    padding-right: 10px;
+    border-right: 1px solid #ddd;
+    margin-right: 10px;
+}
+.comment-item .comment-info .comment-right {
+    float: right;
+}
+.comment-right .comment-hearts {
+    width: 11px;
+    height: 10px;
+    padding-right: 2px;
+    vertical-align: middle;
+}
+.comment-right .comment-like {
+    font-size: 12px;
+    color: #aaa;
+}

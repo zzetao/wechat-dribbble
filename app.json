@@ -1,0 +1,32 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/shots/shots"
+  ],
+  "window":{
+    "backgroundColor":"#f4f4f4",
+    "navigationBarBackgroundColor": "#333",
+    "navigationBarTitleText": "Dribbble",
+    "navigationBarTextStyle":"white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#ddd",
+    "selectedColor": "#fff",
+    "borderStyle": "#333",
+    "backgroundColor": "#333",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "Popular"
+    }, {
+      "pagePath": "pages/debuts/index",
+      "text": "Debuts"
+    }, {
+      "pagePath": "pages/designers/index",
+      "text": "Designers"
+    }, {
+      "pagePath": "pages/teams/index",
+      "text": "Teams"
+    }]
+  }
+}
