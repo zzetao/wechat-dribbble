@@ -1,5 +1,5 @@
 
-const api = require('../../utils/api.js');
+const { request, api, filterHtml } = require('../../utils/util.js');
 
 var app = getApp()
 Page({
@@ -89,18 +89,24 @@ Page({
 
     Object.assign(defaultParams,this.data.activeMenuValue, params);
 
-    
     // send
-    wx.request({
+    request({
       url: api.getShots,
-      data: defaultParams,
-      success: function(res){
-        self.setData({
+      data: defaultParams
+    }).then((res) => {
+      let datas = [];
+
+      for (d of res.data) {
+        d.description = filterHtml(d.description);
+        datas.push(d);
+      }
+      
+       self.setData({
           pageIndex: pageIndex,
-          shots: self.data.shots.concat(res.data),
+          shots: self.data.shots.concat(datas),
           isShowLoading: false
         })
-      }
+
     })
   },
   loadMore: function(e){
@@ -110,14 +116,13 @@ Page({
   },
   onLoad: function () {
     this.getShots();
-    let self = this;
     wx.getSystemInfo({
-      success: function(res) {
-        self.setData({
+      success: (res) => {
+        this.setData({
           windowHeight: res.windowHeight
         })
       }
-    })
+    });
   },
   // 下拉刷新
   onPullDownRefreash: function() {

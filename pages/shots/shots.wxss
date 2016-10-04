@@ -4,6 +4,7 @@ page {
 }
 
 .shot-img{
+    display: block;
     width: 100%;
 }
 
@@ -13,30 +14,29 @@ page {
 }
 .author-avatar image {
     float: left;
-    width: 40px;
-    height: 40px;
+    width: 80rpx;
+    height: 80rpx;
     margin: 0 10px;
-    border-radius: 40px;
-    margin-top: 3px;
+    border-radius: 80rpx;
+    margin-top: 4rpx;
 }
 .author-info {
-    padding-left: 60px;
+    padding-left: 120rpx;
 }
 
 .author-info .author-name {
     color: #444;
-    font-size: 16px;
+    font-size: 32rpx;
 }
 .author-info .author-by {
     color: #bbb;
-    font-size: 14px;
+    font-size: 28rpx;
 }
 
 
 
 .shot-meta {
     border-bottom: 1px solid #ddd;
-    padding-bottom: 2px;
 }
 .shot-meta view{
     display: inline-block;
@@ -71,6 +71,7 @@ page {
 /* comments */
 .shot-comments {
     padding: 15px;
+    padding-bottom: 0;
 }
 .shot-comments .comments-count {
     padding-bottom: 15px;
@@ -85,21 +86,21 @@ page {
     padding-bottom: 10px;
 }
 .comment-item .comment-user-avatar {
-    width: 16px;
-    height: 16px;
+    width: 32rpx;
+    height: 32rpx;
     margin-right: 5px;
-    border-radius: 16px;
-    vertical-align: middle;
+    border-radius: 32rpx;
 }
 .comment-item .comment-user-name {
-    font-size: 15px;
+    font-size: 30rpx;
     font-weight: 500;
 }
 .comment-item .comment-content {
-    font-size: 14px;
+    font-size: 28rpx;
     color: #555;
     margin-bottom: 10px; 
     margin-top: 2px;
+    line-height: 1.5;
 }
 .comment-item .comment-info {
     overflow: hidden;
@@ -126,4 +127,58 @@ page {
 .comment-right .comment-like {
     font-size: 12px;
     color: #aaa;
+}
+
+/* attachments */
+.shot-attach {
+    padding: 15px;
+    padding-top: 8px;
+    background: #fff;
+}
+.shot-attach .shot-attach-count {
+    padding-bottom: 10px;
+}
+.shot-attach-icon {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    padding-right: 3px;
+}
+.shot-attach-text {
+    font-size: 12px;
+    text-transform: uppercase;
+}
+.shot-attach-list .shot-attach-img {
+    width: 60px;
+    height: 48px;
+    box-shadow: 0 0 1px rgba(0,0,0,0.35);
+    margin-right: 8px;
+}
+
+/* multi shots */
+.multi-shots {
+    padding: 15px;
+    padding-top: 0;
+}
+.multi-shots .multi-shots-wrap {
+    overflow: hidden;
+}
+.multi-shots-head {
+    font-size: 30rpx;
+    padding-bottom: 8px;
+    font-weight: 500;
+}
+.multi-shots-item {
+    width: 45%;
+    float: left;
+    display: inline-block;
+    margin: 3.33% 0 0 3.33%;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.07);
+}
+.multi-shots-item .multi-shots-img {
+    border-radius: 2px;
+    padding-bottom: 75%;
+    width: 100%;
+    height: 0;
+    background-size: cover;
 }

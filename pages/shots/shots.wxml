@@ -1,17 +1,28 @@
-<view class="shot-container">
+<view class="shot-container {{changeShotStatus ? 'hidden' : ''}}">
     <view class="author-wrap">
         <view class="author-avatar">
-            <image src="{{ shot.user_avatar }}"></image>
+            <image src="{{ author.avatar_url }}"></image>
         </view>
         <view class="author-info">
-            <text class="author-name">{{ shot.user_name }}</text>
+            <text class="author-name">{{ author.name }}</text>
             <text class="author-by">
                 {{ shot.created_at }}
             </text>
         </view>
     </view>
     <view class="shot-img-wrap">
-        <image class="shot-img" src="{{ shot.image }}"></image>
+        <image class="shot-img" style="height:{{ windowWidth*0.75 }}px;" src="{{ shot.image }}"></image>
+        <view class="shot-attach" wx:if="{{ shot.attachments_count > 0 && attachments }}">
+            <view class="shot-attach-count">
+                <image class="shot-attach-icon" src="../../images/icon-attach.png"></image>
+                <text class="shot-attach-text">{{ shot.attachments_count }} Attachment</text>
+            </view>
+            <view class="shot-attach-list">
+                <block wx:for="{{attachments}}">
+                    <image class="shot-attach-img" data-id="{{item.id}}" src="{{item.thumbnail_url}}"></image>
+                </block>
+            </view>
+        </view>
     </view>
     <view class="shot-meta">
         <view class="shot-like">
@@ -28,7 +39,7 @@
         </view>
     </view>
     <view class="shot-description">
-        <text>{{ shot.description || 'none' }}</text>
+        <text>{{ shot.description || 'null' }}</text>
     </view>
     <view class="shot-comments">
         <view class="comments-count">
@@ -36,28 +47,28 @@
         </view>
         <view class="comments-wrapper">
 
-            <view class="comment-item">
-                <view class="comment-user">
-                    <image class="comment-user-avatar" src="https://d13yacurqjgara.cloudfront.net/users/395439/avatars/small/b938430f1aac77f85052f9e755683b82.jpeg?1471309374"></image>
-                    <text class="comment-user-name">Luke Holloway</text>
-                </view>
-                <view class="comment-content">the Pen tool since, it everyone favorite tool in illustrator</view>
-                <view class="comment-info">
-                    <view class="comment-left">
-                        <text class="comment-date">about 17 hours ago</text>
-                        <text class="comment-like-btn">Like?</text>
-                    </view>
-                    <view class="comment-right">
-                        <image class="comment-hearts" src="../../images/icon-hearts.png"></image>
-                        <text class="comment-like">3</text>
-                    </view>
-                </view>
-            </view>
+        <block wx:for="{{comments}}" wx:for-item="comment">
+            <include src="../../components/comment.wxml" />
+        </block>
 
-        <block wx:if="isShowLoading">
+        <block wx:if="{{isShowLoading}}">
             <include src="../../components/loading.wxml" />
         </block>
 
+        </view>
+    </view>
+    <view class="multi-shots">
+        <view class="multi-shots-head">
+            <text>More from {{author.name}}</text>
+        </view>
+        <view class="multi-shots-wrap">
+            <block wx:for="{{multiShots}}" wx:for-index="index">
+                <view class="multi-shots-item" bindtap="changeShot" data-id="{{index}}">
+                    <view style="background:url({{item.images.normal}}) no-repeat;background-size:cover;" class="multi-shots-img">
+                        
+                    </view>
+                </view>
+            </block>
         </view>
     </view>
 </view>

@@ -18,14 +18,14 @@
         <!-- each shots -->
         <block wx:for="{{shots}}" wx:for-index="idx" wx:for-item="shot">
             <navigator 
-                url="../shots/shots?title={{shot.title}}&id={{shot.id}}&description={{shot.description}}&image={{shot.images.hidpi || shot.images.normal}}&likes_count={{shot.likes_count}}&views_count={{shot.views_count}}&comments_count={{shot.comments_count}}&buckets_count={{shot.buckets_count}}&user_name={{shot.user.name}}&user_id={{shot.user.id}}&created_at={{shot.created_at}}&user_avatar={{shot.user.avatar_url}}"
+                url="../shots/shots?title={{shot.title}}&id={{shot.id}}&image={{shot.images.hidpi || shot.images.normal}}&likes_count={{shot.likes_count}}&views_count={{shot.views_count}}&comments_count={{shot.comments_count}}&buckets_count={{shot.buckets_count}}&user_name={{shot.user.name}}&user_id={{shot.user.id}}&attachments_count={{shot.attachments_count}}&created_at={{shot.created_at}}&description={{shot.description}}&user_avatar={{shot.user.avatar_url}}"
                 class="shot"
             >
                 <include src="../../components/shot.wxml" />
             </navigator>
         </block>
 
-        <block wx:if="isShowLoading">
+        <block wx:if="{{isShowLoading}}">
             <include src="../../components/loading.wxml" />
         </block>
     </scroll-view>

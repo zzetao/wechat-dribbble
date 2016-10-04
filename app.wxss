@@ -3,6 +3,10 @@ page {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #444;
 }
+.hidden {
+    display: none;
+}
+
 /* shot components */
 .shot {
     display: inline-block;
