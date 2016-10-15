@@ -8,4 +8,4 @@ coding...
 
 ## Screenshots
 
-![wechat-dribbble-screenshots](https://cloud.githubusercontent.com/assets/8110936/19105317/ef631386-8b13-11e6-9465-35f18346ff3f.png)
+![wechat-dribbble-screenshots](http://ob513h52u.bkt.clouddn.com/temp/wechat-dribbble-screenshots.png)
