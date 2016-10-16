@@ -1,6 +1,7 @@
 /* global style */
 page {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #f4f4f4;
     color: #444;
 }
 .hidden {

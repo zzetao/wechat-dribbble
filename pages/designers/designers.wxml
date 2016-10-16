@@ -1,0 +1,65 @@
+<scroll-view style="height: {{windowHeight}}px;" bindscrolltolower="loadMore" lower-threshold="800" scroll-y="true">
+<view class="container">		
+	<view class="header-title">
+		<text class="title">Find Designers</text>
+		<text class="description">by location, skills, availability, and more</text>
+	</view>
+
+	<block wx:for="{{designers}}" wx:for-index="index">
+		<view class="designer">
+			<view class="avatar">
+				<image src="{{item.avatar_url}}" class="photo"></image>
+			</view>
+			<view class="info">
+				<text class="name">{{item.name}}</text>
+				<text class="location">{{item.location}}</text>
+				<view class="skills">
+					<block wx:for="{{item.skills}}" wx:for-item="skill">
+						<text >{{skill}}</text>,
+					</block>
+		        </view>
+		        <view class="followers">
+		        	<view 
+		        		class="follow-btn"
+		        		bindtap="followDesigner"
+		        		data-id="{{item.id}}"
+		        	></view>
+		        	<view class="followers-stat">
+		        		<text class="count">{{item.followers_count}}</text>
+		        		<text class="text">followers</text>
+		        	</view>
+		        </view>
+		        <view class="bio">
+		        	<text>{{item.bio}}</text>
+		        </view>
+			</view>
+
+			<scroll-view
+				class="shots {{item.isScrolled ? 'is-scrolled' : ''}}"
+				scroll-x="true"
+		      	lower-threshold="300"
+		      	bindscroll="scroll"
+		      	bindscrolltoupper="scrolltoupper"
+		      	bindscrolltolower="scrolltolower"
+		      	wx:if="{{shots[item.id].shots.length > 0}}"
+		      	data-index="{{index}}"
+		      	data-userid="{{item.id}}"
+	      	>
+				<view 
+					class="shot-item"
+					style="width:{{shotWidth}}px; height:{{shotHeight}}px;"
+					wx:for="{{shots[item.id].shots}}"
+					wx:for-item="shot"
+					wx:for-index="shotIndex"
+					data-id="{{shot.id}}"
+				>
+					<image src="{{shot.img}}"></image>
+				</view>
+			</scroll-view>
+		</view>
+	</block>
+    <block wx:if="{{isShowLoading}}">
+        <include src="../../components/loading.wxml" />
+    </block>
+</view>
+</scroll-view>

@@ -1,7 +1,8 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/shots/shots"
+    "pages/shots/shots",
+    "pages/designers/designers"
   ],
   "window":{
     "backgroundColor":"#f4f4f4",
@@ -21,7 +22,7 @@
       "iconPath": "./images/tabbar-icon-popular-normal.png",
       "selectedIconPath": "./images/tabbar-icon-popular-active.png"
     }, {
-      "pagePath": "pages/designers/index",
+      "pagePath": "pages/designers/designers",
       "text": "Designers",
       "iconPath": "./images/tabbar-icon-designers-normal.png",
       "selectedIconPath": "./images/tabbar-icon-designers-active.png"

@@ -1,4 +1,7 @@
 const HOST = "https://api.dribbble.com/v1/"; 
+const ORIGIN = "https://dribbble.com/";
+const SERVER = "http://wechat.zzetao.com/";
+// const SERVER = "http://127.0.0.1:3000/";
 
 module.exports = {
     getShots: HOST + 'shots',
@@ -27,4 +30,14 @@ module.exports = {
     getUserShots: function(user_id) {
         return HOST + 'users/' + user_id + '/shots';
     },
+    getDesigners: SERVER + 'designers',
+    getDesignersShots: function(ids) {
+        /*
+            [1,2,3] => "1&user_ids[]=2&user_ids[]=3"
+         */
+        let idsToQuery = ids.join('&user_ids[]=');
+        
+        return ORIGIN + 'designers/shots?user_ids[]=' + idsToQuery;
+    },
+    getDesignerShots: ORIGIN + 'designers/shots',
 }

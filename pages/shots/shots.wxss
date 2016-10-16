@@ -1,8 +1,3 @@
-page {
-    background: #f4f4f4;
-    color: #444;
-}
-
 .shot-img{
     display: block;
     width: 100%;
