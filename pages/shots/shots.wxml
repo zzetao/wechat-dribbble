@@ -11,7 +11,7 @@
         </view>
     </view>
     <view class="shot-img-wrap">
-        <image class="shot-img" style="height:{{ windowWidth*0.75 }}px;" src="{{ shot.image }}"></image>
+        <image class="shot-img" style="height:{{ windowWidth*0.75 }}px;" src="{{ shot.image || shot.images.normal }}"></image>
         <view class="shot-attach" wx:if="{{ shot.attachments_count > 0 && attachments }}">
             <view class="shot-attach-count">
                 <image class="shot-attach-icon" src="../../images/icon-attach.png"></image>
@@ -27,15 +27,15 @@
     <view class="shot-meta">
         <view class="shot-like">
             <image class="shot-meta-icon shot-like-img" src="../../images/icon-hearts.png"></image>
-            <text class="shot-meta-text">{{ shot.likes_count }}</text>
+            <text class="shot-meta-text">{{ shot.likes_count || 0 }}</text>
         </view>
         <view class="shot-views">
             <image class="shot-meta-icon shot-views-img" src="../../images/icon-views.png"></image>
-            <text class="shot-meta-text">{{ shot.views_count }}</text>
+            <text class="shot-meta-text">{{ shot.views_count || 0 }}</text>
         </view>
         <view class="shot-bucket">
             <image class="shot-meta-icon shot-bucket-img" src="../../images/icon-bucket.png"></image>
-            <text class="shot-meta-text">{{ shot.buckets_count }}</text>
+            <text class="shot-meta-text">{{ shot.buckets_count || 0 }}</text>
         </view>
     </view>
     <view class="shot-description">

@@ -110,9 +110,32 @@ Page({
             title: shot.title || 'Dribbble'
         });
     },
+    getShot: function(id) {
+        console.log('[get a shot]: ',id)
+        request({
+            url: api.getShot(id)
+        })
+        .then(res => {
+            let { data } = res;
+            data.created_at = dateFormat((data.created_at || '').replace(/T|Z/g," "), 'eM d, yyyy');
+            data.description = filterHtml(data.description);
+
+            if (data.attachments_count > 0) {
+                this.getAttachments(data.id);
+            }
+
+            this.setData({
+                shot: data
+            })
+        })
+    },
     onLoad: function(options) {
         console.log(options);
-        options.created_at = dateFormat((options.created_at || '').replace(/T|Z/g," "), 'eM d, yyyy')
+        if (options.is_request) {
+            this.getShot(options.id);
+        } else {
+            options.created_at = dateFormat((options.created_at || '').replace(/T|Z/g," "), 'eM d, yyyy')
+        }
 
         this.setData({
             author: {

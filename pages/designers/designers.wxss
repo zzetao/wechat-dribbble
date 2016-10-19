@@ -117,7 +117,7 @@
 	left: 0;
     background: linear-gradient(to left, rgba(244,244,244,0), #f4f4f4);
 }
-.shots .shot-item {
+.shots .shot-item-nav {
 	display: inline-block;
 	padding: 5px;
 	background-color: #fff;
@@ -126,6 +126,8 @@
 	overflow: hidden;
 	margin-right: 5%;
 	margin-bottom: 5px;
+}
+.shots .shot-item {
 }
 .shots .shot-item image {
 	width: 100%;

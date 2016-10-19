@@ -4,6 +4,9 @@ const SERVER = "http://wechat.zzetao.com/";
 // const SERVER = "http://127.0.0.1:3000/";
 
 module.exports = {
+    getShot: function(id) {
+        return HOST + 'shots/' + id;
+    },
     getShots: HOST + 'shots',
     getShotAttachments: function(id) {
         return HOST + 'shots/' + id + '/attachments';
