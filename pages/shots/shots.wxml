@@ -18,7 +18,7 @@
                 <text class="shot-attach-text">{{ shot.attachments_count }} Attachment</text>
             </view>
             <view class="shot-attach-list">
-                <block wx:for="{{attachments}}">
+                <block wx:for="{{attachments}}" wx:key="item.id">
                     <image class="shot-attach-img" data-id="{{item.id}}" src="{{item.thumbnail_url}}"></image>
                 </block>
             </view>
@@ -47,7 +47,7 @@
         </view>
         <view class="comments-wrapper">
 
-        <block wx:for="{{comments}}" wx:for-item="comment">
+        <block wx:for="{{comments}}" wx:for-item="comment" wx:key="comment.id">
             <include src="../../components/comment.wxml" />
         </block>
 
@@ -62,7 +62,7 @@
             <text>More from {{author.name}}</text>
         </view>
         <view class="multi-shots-wrap">
-            <block wx:for="{{multiShots}}" wx:for-index="index">
+            <block wx:for="{{multiShots}}" wx:for-index="index" wx:key="item.id">
                 <view class="multi-shots-item" bindtap="changeShot" data-id="{{index}}">
                     <view style="background:url({{item.images.normal}}) no-repeat;background-size:cover;" class="multi-shots-img">
                         

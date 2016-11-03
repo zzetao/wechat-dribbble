@@ -1,5 +1,5 @@
 
-const { request, api, filterHtml } = require('../../utils/util.js');
+const { request, api, filterHtml, addCommas } = require('../../utils/util.js');
 
 var app = getApp()
 Page({
@@ -98,6 +98,8 @@ Page({
 
       for (d of res.data) {
         d.description = filterHtml(d.description);
+        d.views_count = addCommas(d.views_count);
+        d.likes_count = addCommas(d.likes_count);
         datas.push(d);
       }
       

@@ -128,6 +128,17 @@
 	margin-bottom: 5px;
 }
 .shots .shot-item {
+	position: relative;
+}
+.shots .shot-item .animated {
+	position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 23px;
+  height: 14px;
+  background: url(../../images/animated-gif.png);
+  background-size: 100%;
+  z-index: 1;
 }
 .shots .shot-item image {
 	width: 100%;

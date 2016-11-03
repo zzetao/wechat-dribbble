@@ -16,7 +16,7 @@
         </view>
 
         <!-- each shots -->
-        <block wx:for="{{shots}}" wx:for-index="idx" wx:for-item="shot">
+        <block wx:for="{{shots}}" wx:for-index="idx" wx:for-item="shot" wx:key="shot.id">
             <navigator 
                 url="../shots/shots?title={{shot.title}}&id={{shot.id}}&image={{shot.images.hidpi || shot.images.normal}}&likes_count={{shot.likes_count}}&views_count={{shot.views_count}}&comments_count={{shot.comments_count}}&buckets_count={{shot.buckets_count}}&user_name={{shot.user.name}}&user_id={{shot.user.id}}&attachments_count={{shot.attachments_count}}&created_at={{shot.created_at}}&description={{shot.description}}&user_avatar={{shot.user.avatar_url}}"
                 class="shot"
@@ -31,7 +31,7 @@
     </scroll-view>
 
     <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
-        <block wx:for="{{menu[activeMenuText]}}" wx:for-index="index">
+        <block wx:for="{{menu[activeMenuText]}}" wx:for-index="index" wx:key="index">
             <action-sheet-item class="item" 
                 bindtap="changeSort"
                 data-name="{{activeMenuText}}"

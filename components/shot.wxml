@@ -10,3 +10,4 @@
     <image src="../../images/icon-hearts.png" class="shot-icon hearts-icon"></image>
     <text class="shot-info-text">{{ shot.likes_count }}</text>
 </view>
+<view class="animated" wx:if="{{shot.animated}}"></view>

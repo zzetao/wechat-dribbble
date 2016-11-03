@@ -1,3 +1,6 @@
+.shot-img-wrap {
+    background: url(../../images/checkerbg.gif);
+}
 .shot-img{
     display: block;
     width: 100%;

@@ -1,5 +1,5 @@
 
-const { request, api, filterHtml, dateFormat } = require('../../utils/util.js');
+const { request, api, filterHtml, dateFormat, addCommas } = require('../../utils/util.js');
 
 var app = getApp();
 
@@ -81,6 +81,9 @@ Page({
         shot.image = shot.images.hidpi || shot.images.normal;
         shot.description = filterHtml(shot.description);
         shot.created_at = dateFormat(shot.created_at.replace(/T|Z/g," "), 'eM d, yyyy')
+        shot.likes_count = addCommas(shot.likes_count);
+        shot.views_count = addCommas(shot.views_count);
+        shot.buckets_count = addCommas(shot.buckets_count);
 
         obj['shot'] = shot;
         obj['comments'] = []; // 清空
@@ -119,6 +122,9 @@ Page({
             let { data } = res;
             data.created_at = dateFormat((data.created_at || '').replace(/T|Z/g," "), 'eM d, yyyy');
             data.description = filterHtml(data.description);
+            data.likes_count = addCommas(data.likes_count);
+            data.views_count = addCommas(data.views_count);
+            data.buckets_count = addCommas(data.buckets_count);
 
             if (data.attachments_count > 0) {
                 this.getAttachments(data.id);

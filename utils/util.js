@@ -44,11 +44,19 @@ function filterHtml(html) {
   return (html || "").replace(/<.*?>/g,"");
 }
 
+/*
+ * 每三位加上逗号
+ * 123456789 => 123,456,789
+*/
+function addCommas(value) {
+  return parseFloat(value || 0).toLocaleString();
+}
 
 module.exports = {
   api: api,
   
   filterHtml: filterHtml,
   dateFormat: dateFormat,
-  request: request
+  request: request,
+  addCommas: addCommas
 }

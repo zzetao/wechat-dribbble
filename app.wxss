@@ -10,6 +10,7 @@ page {
 
 /* shot components */
 .shot {
+    position: relative;
     display: inline-block;
     width: 45%;
     padding: 5px;
@@ -23,6 +24,16 @@ page {
     height: 0;
     padding-bottom: 75%;
     background-size: cover;
+}
+.shot .animated {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 23px;
+    height: 14px;
+    background: url(../../images/animated-gif.png);
+    background-size: 100%;
+    z-index: 1;
 }
 .shot .shot-image {
     width: 100%;

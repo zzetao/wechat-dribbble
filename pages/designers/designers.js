@@ -1,4 +1,4 @@
-const { request, api, filterHtml, dateFormat } = require('../../utils/util.js');
+const { request, api, filterHtml, dateFormat, addCommas } = require('../../utils/util.js');
 
 var app = getApp();
 
@@ -8,7 +8,6 @@ Page({
 		windowHeight: 0,
 		shotWidth: 0,
 		shotHeight: 0,
-		scrollLeft: 0,
 
     isShowLoading: true,
 		designers: [],
@@ -81,7 +80,7 @@ Page({
 
 	        	let { data } = res;
 	        	if (data.length > 0) {
-		        	let shots = {};
+		        	let { shots } = this.data;
 
 	        		for (d of data) {
 	        			shots[d.user_id] = {
@@ -121,25 +120,24 @@ Page({
 		})
 		.then(res => {
 			let obj = {
-				isShowLoading: false
+				isShowLoading: false,
+				designers: this.data.designers
 			};
 
-			if (res.data.datas.length > 0) {
-				let { datas } = res.data;
+			let { datas } = res.data;
+			if (datas.length > 0) {
 				let ids = datas.map(d => d.id); // return -> [1,2,3,4,5]
 				this.getDesignersShots(ids); // 获取用户 shots
 
-				// filter html
-				let _datas = [];
+				// filter html and concat
 				for (d of datas) {
 					d.bio = filterHtml(d.bio);
-					_datas.push(d);
+					d.followers_count = addCommas(d.followers_count);
+					obj['designers'].push(d);
 				}
 				
-				obj['designers'] = this.data.designers.concat(_datas);
 				obj['pageIndex'] = _page;
 			}
-
 			this.setData(obj)
 		})
 	},
@@ -147,7 +145,9 @@ Page({
 		滚动到底部加载数据
 	 */
 	loadMore: function(){
-		this.getDesigners(++this.data.pageIndex);
+		let page = ++this.data.pageIndex;
+		console.log('loadMore:', page);
+		this.getDesigners(page);
 	},
 	/*
 		关注按钮事件
@@ -158,17 +158,16 @@ Page({
 	},
 	onLoad: function(options) {
 		this.getDesigners();
-
-        wx.getSystemInfo({
-            success: (res) => {
-            	let shotWidth = (res.windowWidth - 40) * 0.475;
-                this.setData({
-                	windowWidth: res.windowWidth,
-                	windowHeight: res.windowHeight,
-                  shotWidth: shotWidth,
-                  shotHeight: shotWidth * 0.75
-                })
-            }
-        });
+    wx.getSystemInfo({
+        success: (res) => {
+        	let shotWidth = (res.windowWidth - 40) * 0.475;
+            this.setData({
+            	windowWidth: res.windowWidth,
+            	windowHeight: res.windowHeight,
+              shotWidth: shotWidth,
+              shotHeight: shotWidth * 0.75
+            })
+        }
+    });
 	}
 })
