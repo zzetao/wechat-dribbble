@@ -2,7 +2,8 @@
   "pages":[
     "pages/index/index",
     "pages/shots/shots",
-    "pages/designers/designers"
+    "pages/designers/designers",
+    "pages/users/users"
   ],
   "window":{
     "backgroundColor":"#f4f4f4",

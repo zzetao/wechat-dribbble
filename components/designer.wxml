@@ -1,6 +1,10 @@
 <view class="designer">
 	<view class="avatar">
-		<image src="{{item.avatar_url}}" class="photo"></image>
+		<navigator
+			url="../users/users?id={{item.id}}&name={{item.name}}&username={{item.username}}&avatar_url={{item.avatar_url}}&bio={{item.bio}}"
+		>
+			<image src="{{item.avatar_url}}" class="photo"></image>
+		</navigator>
 	</view>
 	<view class="info">
 		<text class="name">{{item.name}}</text>

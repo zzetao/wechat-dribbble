@@ -1,0 +1,18 @@
+<view class="user">
+	<view class="user-info">
+		<view class="user-info-mod">
+			<view class="avatar">
+				<image src="{{user.avatar_url}}"></image>
+			</view>
+			<text class="username">{{user.name}}</text>
+			<text class="location">{{user.location}}</text>
+			<text class="bio">{{user.bio}}</text>
+		</view>
+		<view class="user-info-extra">
+			
+		</view>
+	</view>
+	<view class="user-shots">
+		
+	</view>
+</view>

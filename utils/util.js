@@ -53,10 +53,9 @@ function addCommas(value) {
 }
 
 module.exports = {
-  api: api,
-  
-  filterHtml: filterHtml,
-  dateFormat: dateFormat,
-  request: request,
-  addCommas: addCommas
+  api,
+  filterHtml,
+  dateFormat,
+  request,
+  addCommas
 }

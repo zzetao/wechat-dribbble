@@ -41,7 +41,7 @@ Page({
         request({
             url: api.getShotAttachments(id)
         })
-        .then((res) => {
+        .then(res => {
             console.log('attachments:', res);
             this.setData({
                 attachments: res.data
@@ -60,7 +60,7 @@ Page({
                 let length = data.length;
                 
                 // 获取4个，且不要跟当前重复
-                for (let i = 0; i<length; i++)  {
+                for (let i = 0; i < length; i++)  {
                     if (data[i].id != shot_id && datas.length !== 4){
                         datas.push(data[i]);
                     }

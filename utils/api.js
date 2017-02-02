@@ -1,7 +1,7 @@
 const HOST = "https://api.dribbble.com/v1/"; 
 const ORIGIN = "https://dribbble.com/";
-const SERVER = "http://wechat.zzetao.com/";
-// const SERVER = "http://127.0.0.1:3000/";
+// const SERVER = "http://wechat.zzetao.com/";
+const SERVER = "http://127.0.0.1:3000/";
 
 module.exports = {
     getShot: function(id) {
@@ -32,6 +32,9 @@ module.exports = {
     },
     getUserShots: function(user_id) {
         return HOST + 'users/' + user_id + '/shots';
+    },
+    getUserProfile: function(user_name) {
+        return HOST + 'users/' + user_name;
     },
     getDesigners: SERVER + 'designers',
     getDesignersShots: function(ids) {

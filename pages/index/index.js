@@ -39,17 +39,17 @@ Page({
   /*------------------ methods  -----------------*/
   
   changeSort: function(e) {
-    var name = e.currentTarget.dataset.name;
-    let index = e.currentTarget.dataset.index;
-    let value = e.currentTarget.dataset.value;
+    let { name, index, value } = e.currentTarget.dataset;
+    let { activeMenuValue, activeMenu, menu } = this.data;
 
     let obj = {
-      activeMenuValue: this.data.activeMenuValue,
-      activeMenu: this.data.activeMenu,
+      activeMenuValue,
+      activeMenu
     };
+
     obj['actionSheetHidden'] = !this.data.actionSheetHidden;
     obj['activeMenu'][name] = value;
-    obj['activeMenuValue'][name] = this.data.menu[name+'Value'][index];
+    obj['activeMenuValue'][name] = menu[name + 'Value'][index];
 
     obj['shots'] = [];  // 清空
     obj['pageIndex'] = 1; // 分页重置
@@ -63,22 +63,27 @@ Page({
   },
   actionSheetChange: function(e){
     let datas = {};
-    datas['actionSheetHidden'] = !this.data.actionSheetHidden;
-    if (e.currentTarget.dataset.name){
-      datas['activeMenuText'] = e.currentTarget.dataset.name;  
+    let { name } = e.currentTarget.dataset;
+    let { actionSheetHidden } = this.data;
+
+    datas['actionSheetHidden'] = !actionSheetHidden;
+    if (name){
+      datas['activeMenuText'] = name;  
     }
     this.setData(datas);
   },
 
-  getShots: function(params, cb) {
-
-    params = params || {};
-    
+  /**
+   * 获取数据
+   * @param  {Object}   params
+   * @return
+   */
+  getShots: function(params = {}) {
+  
     let pageIndex = params.page || 1;
-    let self = this;
 
     // show loading
-    self.setData({
+    this.setData({
       isShowLoading: true
     });
 
@@ -87,13 +92,13 @@ Page({
       per_page: 30
     };
 
-    Object.assign(defaultParams,this.data.activeMenuValue, params);
+    Object.assign(defaultParams, this.data.activeMenuValue, params);
 
     // send
     request({
       url: api.getShots,
       data: defaultParams
-    }).then((res) => {
+    }).then(res => {
       let datas = [];
 
       for (d of res.data) {
@@ -102,12 +107,12 @@ Page({
         d.likes_count = addCommas(d.likes_count);
         datas.push(d);
       }
-      
-       self.setData({
-          pageIndex: pageIndex,
-          shots: self.data.shots.concat(datas),
-          isShowLoading: false
-        })
+
+      this.setData({
+        pageIndex,
+        shots: this.data.shots.concat(datas),
+        isShowLoading: false
+      })
 
     })
   },
@@ -119,7 +124,7 @@ Page({
   onLoad: function () {
     this.getShots();
     wx.getSystemInfo({
-      success: (res) => {
+      success: res => {
         this.setData({
           windowHeight: res.windowHeight
         })
